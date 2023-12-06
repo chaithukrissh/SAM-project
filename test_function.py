@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock, patch
-from get_items import lambda_handler
+from lambda_function import lambda_handler
 import json
 
 class TestLambdaFunction(unittest.TestCase):
