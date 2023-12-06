@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Home Page</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            text-decoration: none;
+            color: white;
+            background-color: #3498db;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Home Page</h1>
+        <a class="button" href="/add">Add data</a>
+        <a class="button" href="/delete">Delete data</a>
+        <a class="button" href="/get">Get Data</a>
+        <!-- <a class="button" href="/delete">Delete Data by AssetID</a> -->
+    </div>
+</body>
+</html>

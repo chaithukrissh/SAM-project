@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Response</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .response-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .success {
+            color: #008000;
+        }
+
+        .error {
+            color: #ff0000;
+        }
+
+        pre {
+            white-space: pre-wrap;
+        }
+
+        .redirect-button {
+            margin-top: 20px;
+        }
+
+        .redirect-button a {
+            text-decoration: none;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .redirect-button a:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="response-container">
+        {% if result.status == 'success' %}
+            <p class="success">{{ result.message }}</p>
+        {% elif result.status == 'error' %}
+            <p class="error">{{ result.message }}</p>
+        {% else %}
+            <pre>{{ result | safe }}</pre>
+        {% endif %}
+
+        <!-- Button for redirecting to the home page -->
+        <div class="redirect-button">
+            <a href="/">Go to Home</a>
+        </div>
+    </div>
+</body>
+</html>
+
+
