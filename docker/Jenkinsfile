@@ -4,7 +4,8 @@ pipeline{
         stage("Docker"){
             steps{
                 echo "========Building the image========"
-                sh "doker build -t "
+                sh "cd docker"
+                sh "ls"
             }
 
 
