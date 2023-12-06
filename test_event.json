@@ -1,0 +1,9 @@
+{
+    "resource": "/MyUserRegistrationFunction",
+    "path": "/MyUserRegistrationFunction",
+    "httpMethod": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": "{\"user_name\": \"xxx\", \"email\": \"xxx@gmail.com\"}"
+}

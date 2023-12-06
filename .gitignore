@@ -1,0 +1,13 @@
+sa/
+sample-sam-repo/
+temp2/
+sample.zip
+.aws-sam/
+.scannerwork/
+AppSpec*
+app*
+package.yml
+requirements_fordesign.txt
+sample*
+template.yml
+update_items.py

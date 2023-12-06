@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Resources:
+  MyLambdaFunction6:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Events:
+        MyApi:
+          Type: HttpApi
+          Properties:
+            ApiId:
+              Ref: userregistrationapi
+            Path: /MyLambdaFunction6
+            Method: ANY
+  userregistrationapi:
+    Type: 'AWS::Serverless::HttpApi'
+    Properties:
+      StageName: 'test'
+      DefinitionBody:
+        openapi: '3.0.1'
+        info:
+          title: 'userregistrationapi'
+
+  

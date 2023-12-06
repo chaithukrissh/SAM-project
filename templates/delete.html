@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+        }
+
+        button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+
+        .go-to-home {
+            margin-top: 20px;
+        }
+
+        .go-to-home a {
+            text-decoration: none;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .go-to-home a:hover {
+            background-color: #2980b9;
+        }
+
+        .message-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .success-message {
+            color: #2ecc71;
+        }
+
+        .error-message {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Delete User</h1>
+    <form action="/delete_data" method="post">
+        <label for="user_name">User Name:</label>
+        <input type="text" id="user_name" name="user_name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+
+    <div class="message-container">
+        {% if message %}
+            <p class="{{ message_type }}">{{ message }}</p>
+        {% endif %}
+    </div>
+
+    <div class="go-to-home">
+        <a href="/">Go to Home</a>
+    </div>
+    
+</body>
+</html>
+

@@ -1,0 +1,136 @@
+# AWSTemplateFormatVersion: '2010-09-09'
+# Transform: 'AWS::Serverless-2016-10-31'
+
+# Resources:
+#   MyApi:
+#     Type: 'AWS::Serverless::HttpApi'
+#     Properties:
+#       StageName: test
+#       DefinitionBody:
+#         openapi: '3.0.1'
+#         info:
+#           title: 'MyApi5'
+#         paths:
+#           /sample:
+#             x-amazon-apigateway-any-method:
+#               x-amazon-apigateway-integration:
+#                 uri:
+#                   Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${MyLambdaFunction.Arn}/invocations
+#                 passthroughBehavior: when_no_match
+#                 httpMethod: ANY
+#                 type: aws
+                
+#   MyLambdaFunction:
+#     Type: 'AWS::Serverless::Function'
+#     Properties:
+#       Handler: get_items.lambda_handler
+#       Runtime: python3.8
+#       FunctionName: MyLambdaFunction5
+#       CodeUri: ./sample2.zip  
+#       Timeout: 10
+#       Events:
+#         MyApi:
+#           Type: HttpApi
+#           Properties:
+#             ApiId:
+#               Ref: MyApi
+#             Path: /sample
+#             Method: ANY
+
+#   MyDynamoDBTable:
+#     Type: 'AWS::DynamoDB::Table'
+#     Properties:
+#       TableName: sampl-table-for-sam5  
+#       AttributeDefinitions:
+#         - AttributeName: user_name
+#           AttributeType: S
+#         - AttributeName: email
+#           AttributeType: S
+#       KeySchema:
+#         - AttributeName: user_name
+#           KeyType: HASH
+#         - AttributeName: email
+#           KeyType: RANGE
+#       ProvisionedThroughput:
+#         ReadCapacityUnits: 5
+#         WriteCapacityUnits: 5
+
+
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+
+Resources:               
+  MyLambdaFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: get_items.lambda_handler
+      Runtime: python3.8
+      FunctionName: MyLambdaFunction10
+      CodeUri: ./sample2.zip  
+      Timeout: 10
+      Events:
+        MyApi:
+          Type: HttpApi
+          ApiId: !Ref MyApi
+          Path: /sample
+          Method: ANY
+      Role: !GetAtt MyLambdaExecutionRole.Arn 
+  MyApi:
+    Type: 'AWS::Serverless::HttpApi'
+    Properties:
+      StageName: test
+      DefinitionBody:
+        openapi: '3.0.1'
+        info:
+          title: 'MyApi10'
+        paths:
+          /sample:
+            x-amazon-apigateway-any-method:
+              x-amazon-apigateway-integration:
+                uri:
+                  Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${MyLambdaFunction.Arn}/invocations
+                passthroughBehavior: when_no_match
+                httpMethod: ANY
+                type: aws
+  MyLambdaExecutionRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      RoleName: MyLambdaExecutionRole10
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: AdminAccessPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: '*'
+                Resource: '*'
+
+  MyDynamoDBTable:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      TableName: sampl-table-for-sam10
+      AttributeDefinitions:
+        - AttributeName: user_name
+          AttributeType: S
+        - AttributeName: email
+          AttributeType: S
+      KeySchema:
+        - AttributeName: user_name
+          KeyType: HASH
+        - AttributeName: email
+          KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+
+  
+
+
