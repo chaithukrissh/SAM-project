@@ -5,3 +5,6 @@ Api endpoint for user creation, retrieval, and data processing. The Serverless F
 employed to define and deploy the AWS resources, including Lambda functions and 
 DynamoDB table and Http Api. The project follows best practices for serverless architecture, 
 emphasizing scalability, security, and cost-effectiveness.
+
+[serverless.pdf](https://github.com/chaithukrissh/SAM-project/files/13577233/serverless.pdf)
+
