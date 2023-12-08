@@ -17,16 +17,14 @@ pipeline{
         stage("Docker-hub"){
             steps{
                 echo "This steps is for pushing docker image to docker hub"
-                sh """
-                
-                withCredentials([usernamePassword(credentialsId:'docker-hub' , usernameVariable:'user' , passwordVariable:'pass')]){
-                         sh " docker login -u $user -p $pass "
-                    }
 
-                cd docker
-                docker push chaithukrissh/jenkins-sam-project:1.0 
-                
-                """
+
+                withCredentials([usernamePassword(credentialsId:'docker-hub' , usernameVariable:'user' , passwordVariable:'pass')]){
+                        sh " docker login -u $user -p $pass "
+                        sh " docker push chaithukrissh/jenkins-sam-project:1.0 "
+                     }
+
+
             }
         }
 
