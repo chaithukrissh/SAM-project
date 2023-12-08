@@ -5,7 +5,7 @@ sample.zip
 .aws-sam/
 .scannerwork/
 AppSpec*
-app*
+app.*
 package.yml
 requirements_fordesign.txt
 sample*
