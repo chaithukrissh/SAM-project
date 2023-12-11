@@ -6,6 +6,8 @@ sample.zip
 .scannerwork/
 AppSpec*
 app.*
+cluster*
+con*
 package.yml
 requirements_fordesign.txt
 sample*

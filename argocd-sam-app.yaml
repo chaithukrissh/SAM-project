@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+
+kind: Application
+
+metadata:
+  name: sample-argocd-sam-app
+  labels:
+    app: argo-sam-application
+  namespace: sample-sam-application
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=true
+
+spec:
+  project: sample-sam
+  source:
+    repoURL: 'https://github.com/chaithukrissh/SAM-project.git'
+    path: docker/
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: sample-sam-application
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
