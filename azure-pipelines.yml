@@ -6,7 +6,7 @@
 trigger:
 - master
 
-pool: 'Azure Pipelines'
+pool: 'chaithu'
 
 steps:
 - script: echo Hello, world!
