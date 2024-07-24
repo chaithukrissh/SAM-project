@@ -1,8 +1,8 @@
 FROM python:3.8
 
-WORKDIR /app
+WORKDIR /apph
 
-COPY . /app/
+COPY . /apph/
 
 RUN pip install -r requirements.txt
 
